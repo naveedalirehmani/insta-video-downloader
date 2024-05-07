@@ -1,4 +1,4 @@
-import { GraphQLResponse } from "@/types/types";
+import { GraphQLResponse } from "@/types/global";
 import axios from "axios";
 import querystring from "querystring";
 
