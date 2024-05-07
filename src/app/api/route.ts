@@ -5,7 +5,7 @@ import {
   getPostIdFromUrl,
   getPostPageHTML,
 } from "@/utils/helpers";
-import { VideoInfo } from "@/types/types";
+import { VideoInfo } from "@/types/global";
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -105,7 +105,7 @@ const getVideoJsonFromHTML = async (postId: string) => {
 
 const getVideoJSONFromGraphQL = async (postId: string) => {
   const data = await getPostGraphqlData({ postId });
-  console.log(data.data, "data");
+
   const mediaData = data.data?.xdt_shortcode_media;
 
   if (!mediaData) {
@@ -151,7 +151,7 @@ const formatPageJson = (postHtml: any) => {
 const formatGraphqlJson = (data: any) => {
   const timeStamp = Math.floor(Date.now() / 1000).toString();
   const filename = `insta-online-g-${timeStamp}.mp4`;
-  console.log(JSON.stringify(data.edge_media_to_caption), "adad;ljhal");
+  
   const width = data.dimensions.width.toString();
   const height = data.dimensions.height.toString();
   const videoUrl = data.video_url;
